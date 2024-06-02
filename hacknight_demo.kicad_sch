@@ -144,7 +144,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 153.67 88.9 0)
+		(at 143.51 87.63 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -152,7 +152,7 @@
 		(dnp no)
 		(uuid "f833f13f-ea71-4ca6-aad8-efce05490837")
 		(property "Reference" "C1"
-			(at 154.305 86.36 0)
+			(at 144.145 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -160,8 +160,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100 uF"
-			(at 154.305 91.44 0)
+		(property "Value" "CL05B104KP5NNNC - 0.1 uF"
+			(at 144.145 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -170,7 +170,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 154.6352 92.71 0)
+			(at 144.4752 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -179,7 +179,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 153.67 88.9 0)
+			(at 143.51 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -188,7 +188,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 153.67 88.9 0)
+			(at 143.51 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
