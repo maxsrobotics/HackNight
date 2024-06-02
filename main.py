@@ -1,20 +1,43 @@
 import digikey
-
 from digikey.v3.productinformation import KeywordSearchRequest
-from digikey.v3.productinformation.rest import ApiException
-from digikey.oauth import get_digikey_client
+import os
+import ast
 
-# Create a client
-client = get_digikey_client()
+value = "10uF"
+partType = "ceramic capacitor"
+package = "0805"
+dielectric = "X5R"
 
-# Create a keyword search request
-search_request = KeywordSearchRequest(keywords='resistor', records=10)
+part = partType + " " + value + " " + package + " " + dielectric
 
-try:
-    # Perform the search
-    api_response = client.keyword_search(body=search_request)
-    print("Search completed successfully")
-    for product in api_response.products:
-        print(f"Found product: {product.digi_key_part_number}")
-except ApiException as e:
-    print("Exception when calling Digikey API: %s\n" % e)
+os.environ["DIGIKEY_CLIENT_ID"] = "QlnQBYLGQCUJPG2xAydT5zUbrSzsARya"
+os.environ["DIGIKEY_CLIENT_SECRET"] = "pCN17uORphL5KIys"
+os.environ['DIGIKEY_STORAGE_PATH'] = "cache_dir"
+
+search_requests = KeywordSearchRequest(keywords=part, record_count=10)
+results = digikey.keyword_search(body=search_requests)
+
+parsed = ast.literal_eval(str(results))
+
+outputDict = {}
+
+for i in range(len(parsed['products'])):
+   
+    # Create a new dictionary for each product
+    product_dict = {
+        'unit_price': str(parsed['products'][i]['unit_price']),
+        'quantity': str(parsed['products'][i]['minimum_order_quantity']),
+        'partNum': str(parsed['products'][i]['manufacturer_part_number'])
+    }
+    
+    # Append the duct dictionary to the output dictionary
+    outputDict[i] = product_dict
+
+# print(outputDict)
+
+specified_quantity = 10  # Replace with your specified quantity
+
+# Filter the dictionary to only include items with a quantity greater than or equal to the specified quantity
+outputDict = {k: v for k, v in outputDict.items() if int(v['quantity']) <= specified_quantity}
+
+print(outputDict)
