@@ -35,3 +35,5 @@ outputDict = {k: v for k, v in outputDict.items() if int(v['quantity']) <= 10}
 print("Possible Parts:\n")
 for key, value in outputDict.items():
     print(f"{key}. Part Number: {value['part_num']}, Unit Price: ${value['unit_price']}, Quantity: {value['quantity']}")
+
+print(f"Best Product Based on Price: {outputDict[next(iter(outputDict))]['part_num']}, at ${outputDict[next(iter(outputDict))]['unit_price']}")
