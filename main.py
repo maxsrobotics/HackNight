@@ -2,19 +2,15 @@ import digikey
 from digikey.v3.productinformation import KeywordSearchRequest
 import os
 import ast
+import sys
 
-value = "10uF"
-partType = "ceramic capacitor"
-package = "0805"
-dielectric = "X5R"
-
-part = partType + " " + value + " " + package + " " + dielectric
+search = sys.argv[1] + " " + sys.argv[2] + " " + sys.argv[3]
 
 os.environ["DIGIKEY_CLIENT_ID"] = "QlnQBYLGQCUJPG2xAydT5zUbrSzsARya"
 os.environ["DIGIKEY_CLIENT_SECRET"] = "pCN17uORphL5KIys"
 os.environ['DIGIKEY_STORAGE_PATH'] = "cache_dir"
 
-search_requests = KeywordSearchRequest(keywords=part, record_count=10)
+search_requests = KeywordSearchRequest(keywords=search, record_count=10)
 results = digikey.keyword_search(body=search_requests)
 
 parsed = ast.literal_eval(str(results))
