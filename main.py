@@ -4,7 +4,7 @@ import os
 import ast
 import sys
 
-search = sys.argv[1] + " " + sys.argv[2] + " " + sys.argv[3]
+search = " ".join(sys.argv[1:])  # Join all elements from index 1 to the end
 
 os.environ["DIGIKEY_CLIENT_ID"] = "QlnQBYLGQCUJPG2xAydT5zUbrSzsARya"
 os.environ["DIGIKEY_CLIENT_SECRET"] = "pCN17uORphL5KIys"
