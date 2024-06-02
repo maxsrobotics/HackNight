@@ -29,11 +29,7 @@ for i in range(len(parsed['products'])):
     # Append the duct dictionary to the output dictionary
     outputDict[i] = product_dict
 
-# print(outputDict)
-
-specified_quantity = 10  # Replace with your specified quantity
-
 # Filter the dictionary to only include items with a quantity greater than or equal to the specified quantity
-outputDict = {k: v for k, v in outputDict.items() if int(v['quantity']) <= specified_quantity}
+outputDict = {k: v for k, v in outputDict.items() if int(v['quantity']) <= 10}
 
 print(outputDict)
