@@ -23,7 +23,7 @@ for i in range(len(parsed['products'])):
     product_dict = {
         'unit_price': str(parsed['products'][i]['unit_price']),
         'quantity': str(parsed['products'][i]['minimum_order_quantity']),
-        'partNum': str(parsed['products'][i]['manufacturer_part_number'])
+        'part_num': str(parsed['products'][i]['manufacturer_part_number'])
     }
     
     # Append the duct dictionary to the output dictionary
@@ -32,4 +32,6 @@ for i in range(len(parsed['products'])):
 # Filter the dictionary to only include items with a quantity greater than or equal to the specified quantity
 outputDict = {k: v for k, v in outputDict.items() if int(v['quantity']) <= 10}
 
-print(outputDict)
+print("Possible Parts:\n")
+for key, value in outputDict.items():
+    print(f"{key}. Part Number: {value['part_num']}, Unit Price: ${value['unit_price']}, Quantity: {value['quantity']}")
